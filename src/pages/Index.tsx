@@ -210,10 +210,12 @@ const Index = () => {
               <h2 className="text-3xl md:text-4xl font-bold mb-3">Популярные курсы</h2>
               <p className="text-muted-foreground text-lg">Выберите направление и начните карьеру мечты</p>
             </div>
-            <Button variant="ghost" className="hidden md:flex">
-              Все курсы
-              <Icon name="ArrowRight" size={16} className="ml-2" />
-            </Button>
+            <Link to="/catalog">
+              <Button variant="ghost" className="hidden md:flex">
+                Все курсы
+                <Icon name="ArrowRight" size={16} className="ml-2" />
+              </Button>
+            </Link>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -306,20 +308,19 @@ const Index = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {categories.map((category, index) => (
-              <Card
-                key={index}
-                className="group cursor-pointer hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-primary"
-              >
-                <CardHeader className="text-center">
-                  <div className="w-16 h-16 rounded-2xl bg-primary/10 group-hover:bg-primary group-hover:text-white transition-colors flex items-center justify-center mx-auto mb-4">
-                    <Icon name={category.icon} size={32} />
-                  </div>
-                  <CardTitle className="text-xl">{category.name}</CardTitle>
-                  <CardDescription className="text-base">
-                    {category.count} курсов
-                  </CardDescription>
-                </CardHeader>
-              </Card>
+              <Link key={index} to="/catalog">
+                <Card className="group cursor-pointer hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-primary">
+                  <CardHeader className="text-center">
+                    <div className="w-16 h-16 rounded-2xl bg-primary/10 group-hover:bg-primary group-hover:text-white transition-colors flex items-center justify-center mx-auto mb-4">
+                      <Icon name={category.icon} size={32} />
+                    </div>
+                    <CardTitle className="text-xl">{category.name}</CardTitle>
+                    <CardDescription className="text-base">
+                      {category.count} курсов
+                    </CardDescription>
+                  </CardHeader>
+                </Card>
+              </Link>
             ))}
           </div>
         </div>
