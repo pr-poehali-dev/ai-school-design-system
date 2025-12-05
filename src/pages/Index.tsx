@@ -3,88 +3,11 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from "@/components/ui/badge";
 import Icon from "@/components/ui/icon";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { coursesData } from "@/data/courses";
+import { Link } from "react-router-dom";
 
 const Index = () => {
-  const courses = [
-    {
-      id: 1,
-      title: "Full-Stack разработка на React и Node.js",
-      category: "IT",
-      level: "Продвинутый",
-      price: "89 900 ₽",
-      oldPrice: "120 000 ₽",
-      duration: "12 месяцев",
-      students: 1240,
-      rating: 4.9,
-      image: "https://cdn.poehali.dev/projects/68b92a6a-51c2-4daa-acf0-8bcc8dde5adb/files/21ef8831-e820-4f89-99fe-cabfdda712a8.jpg",
-      badge: "Хит"
-    },
-    {
-      id: 2,
-      title: "UX/UI дизайн: от основ до портфолио",
-      category: "Дизайн",
-      level: "Средний",
-      price: "69 900 ₽",
-      oldPrice: null,
-      duration: "9 месяцев",
-      students: 856,
-      rating: 4.8,
-      image: "https://cdn.poehali.dev/projects/68b92a6a-51c2-4daa-acf0-8bcc8dde5adb/files/fbeecb60-80db-48a5-a714-fb278a3e611a.jpg",
-      badge: "Новинка"
-    },
-    {
-      id: 3,
-      title: "Digital-маркетинг и продвижение",
-      category: "Маркетинг",
-      level: "Начальный",
-      price: "49 900 ₽",
-      oldPrice: "65 000 ₽",
-      duration: "6 месяцев",
-      students: 2103,
-      rating: 4.7,
-      image: "https://cdn.poehali.dev/projects/68b92a6a-51c2-4daa-acf0-8bcc8dde5adb/files/22e50b7d-08b7-4c79-a3aa-5df6f724d205.jpg",
-      badge: "Скидка"
-    },
-    {
-      id: 4,
-      title: "Python для анализа данных и ML",
-      category: "IT",
-      level: "Средний",
-      price: "79 900 ₽",
-      oldPrice: null,
-      duration: "10 месяцев",
-      students: 967,
-      rating: 4.9,
-      image: "https://cdn.poehali.dev/projects/68b92a6a-51c2-4daa-acf0-8bcc8dde5adb/files/21ef8831-e820-4f89-99fe-cabfdda712a8.jpg",
-      badge: null
-    },
-    {
-      id: 5,
-      title: "Управление продуктом: Product Manager",
-      category: "Бизнес",
-      level: "Продвинутый",
-      price: "99 900 ₽",
-      oldPrice: "130 000 ₽",
-      duration: "12 месяцев",
-      students: 543,
-      rating: 4.8,
-      image: "https://cdn.poehali.dev/projects/68b92a6a-51c2-4daa-acf0-8bcc8dde5adb/files/fbeecb60-80db-48a5-a714-fb278a3e611a.jpg",
-      badge: "Хит"
-    },
-    {
-      id: 6,
-      title: "Графический дизайн и брендинг",
-      category: "Дизайн",
-      level: "Начальный",
-      price: "54 900 ₽",
-      oldPrice: null,
-      duration: "8 месяцев",
-      students: 1456,
-      rating: 4.7,
-      image: "https://cdn.poehali.dev/projects/68b92a6a-51c2-4daa-acf0-8bcc8dde5adb/files/22e50b7d-08b7-4c79-a3aa-5df6f724d205.jpg",
-      badge: null
-    }
-  ];
+  const courses = coursesData;
 
   const categories = [
     { name: "IT и программирование", icon: "Code2", count: 127 },
@@ -361,10 +284,12 @@ const Index = () => {
                     )}
                     <span className="text-2xl font-bold">{course.price}</span>
                   </div>
-                  <Button>
-                    Подробнее
-                    <Icon name="ArrowRight" size={16} className="ml-2" />
-                  </Button>
+                  <Link to={`/course/${course.slug}`}>
+                    <Button>
+                      Подробнее
+                      <Icon name="ArrowRight" size={16} className="ml-2" />
+                    </Button>
+                  </Link>
                 </CardFooter>
               </Card>
             ))}
