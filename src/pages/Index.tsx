@@ -116,6 +116,57 @@ const Index = () => {
     }
   ];
 
+  const teachers = [
+    {
+      id: 1,
+      name: "Алексей Михайлов",
+      position: "Senior Full-Stack Developer",
+      company: "Яндекс",
+      experience: "12 лет в разработке",
+      students: 3200,
+      courses: 5,
+      avatar: "АМ",
+      specialization: "IT",
+      rating: 4.9
+    },
+    {
+      id: 2,
+      name: "Екатерина Смирнова",
+      position: "Lead UX/UI Designer",
+      company: "VK",
+      experience: "9 лет в дизайне",
+      students: 2100,
+      courses: 4,
+      avatar: "ЕС",
+      specialization: "Дизайн",
+      rating: 4.8
+    },
+    {
+      id: 3,
+      name: "Игорь Петров",
+      position: "Product Manager",
+      company: "Сбер",
+      experience: "15 лет в продукте",
+      students: 1800,
+      courses: 3,
+      avatar: "ИП",
+      specialization: "Бизнес",
+      rating: 4.9
+    },
+    {
+      id: 4,
+      name: "Мария Новикова",
+      position: "Head of Marketing",
+      company: "Ozon",
+      experience: "11 лет в маркетинге",
+      students: 2500,
+      courses: 6,
+      avatar: "МН",
+      specialization: "Маркетинг",
+      rating: 4.7
+    }
+  ];
+
   const reviews = [
     {
       id: 1,
@@ -158,6 +209,9 @@ const Index = () => {
               </a>
               <a href="#categories" className="text-sm font-medium hover:text-primary transition-colors">
                 Категории
+              </a>
+              <a href="#teachers" className="text-sm font-medium hover:text-primary transition-colors">
+                Преподаватели
               </a>
               <a href="#reviews" className="text-sm font-medium hover:text-primary transition-colors">
                 Отзывы
@@ -366,6 +420,59 @@ const Index = () => {
                   <CardTitle className="text-lg">{benefit.title}</CardTitle>
                   <CardDescription>{benefit.description}</CardDescription>
                 </CardHeader>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="teachers" className="py-16 md:py-24">
+        <div className="container">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-3">Наши преподаватели</h2>
+            <p className="text-muted-foreground text-lg">Эксперты из ведущих компаний</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {teachers.map((teacher) => (
+              <Card key={teacher.id} className="group text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <CardHeader>
+                  <Avatar className="w-24 h-24 mx-auto mb-4 ring-4 ring-primary/10 group-hover:ring-primary/30 transition-all">
+                    <AvatarFallback className="bg-gradient-to-br from-primary to-secondary text-white text-2xl">
+                      {teacher.avatar}
+                    </AvatarFallback>
+                  </Avatar>
+                  <CardTitle className="text-xl">{teacher.name}</CardTitle>
+                  <CardDescription className="text-base font-medium">
+                    {teacher.position}
+                  </CardDescription>
+                  <Badge className="mx-auto mt-2 bg-primary/10 text-primary hover:bg-primary/20">
+                    {teacher.company}
+                  </Badge>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+                    <Icon name="Briefcase" size={16} />
+                    <span>{teacher.experience}</span>
+                  </div>
+                  <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+                    <Icon name="Users" size={16} />
+                    <span>{teacher.students.toLocaleString()} студентов</span>
+                  </div>
+                  <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+                    <Icon name="BookOpen" size={16} />
+                    <span>{teacher.courses} курсов</span>
+                  </div>
+                  <div className="flex items-center justify-center gap-1 pt-2">
+                    <Icon name="Star" size={16} className="fill-accent text-accent" />
+                    <span className="font-semibold">{teacher.rating}</span>
+                  </div>
+                </CardContent>
+                <CardFooter className="justify-center">
+                  <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-white transition-colors">
+                    Смотреть курсы
+                  </Button>
+                </CardFooter>
               </Card>
             ))}
           </div>
